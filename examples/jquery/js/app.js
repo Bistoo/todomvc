@@ -184,21 +184,21 @@ jQuery(function ($) {
 
 	var view = {
 		render: function () {
-			var todos = app.getFilteredTodos();
-			$('#todo-list').html(app.todoTemplate(todos));
+			var todos = App.getFilteredTodos();
+			$('#todo-list').html(App.todoTemplate(todos));
 			$('#main').toggle(todos.length > 0);
-			$('#toggle-all').prop('checked', app.getActiveTodos().length === 0);
+			$('#toggle-all').prop('checked', App.getActiveTodos().length === 0);
 			this.renderFooter();
 			$('#new-todo').focus();
 		},
 		renderFooter: function () {
-			var todoCount = app.todos.length;
-			var activeTodoCount = app.getActiveTodos().length;
-			var template = app.footerTemplate({
+			var todoCount = App.todos.length;
+			var activeTodoCount = App.getActiveTodos().length;
+			var template = App.footerTemplate({
 				activeTodoCount: activeTodoCount,
 				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
 				completedTodos: todoCount - activeTodoCount,
-				filter: app.filter
+				filter: App.filter
 			});
 			
 			$('#footer').toggle(todoCount > 0).html(template);
